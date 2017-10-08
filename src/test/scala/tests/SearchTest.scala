@@ -8,22 +8,22 @@ class SearchTest extends SearchPageSteps{
   val disciplineOne = "Engineering"
   val disciplineTwo = "Computer Science"
 
-  describe("My Search Functionality"){
-    it("should allow users to search by a book title"){
+  describe("On searching for a book title user"){
+    it("should be able to view relevant search results"){
       openApplication()
       searchByKeyword(bookTitle)
       verifySearchResult(bookTitle)
     }
 
-    it("should allow users to navigate to the document detail page on clicking title link"){
+    it("should be able view and click the search result "){
       navigateToSearchDetailsPage(bookTitle)
       verifySearchDetailsPage(bookTitle)
     }
 
   }
 
-  describe("My Search Functionality"){
-    it("should allow users to filter results based on a discipline"){
+  describe("On filtering the search result user"){
+    it("should be able to narrow down the results"){
       openApplication()
       searchByKeyword(bookTitle)
       verifySearchResult(bookTitle)
@@ -31,7 +31,7 @@ class SearchTest extends SearchPageSteps{
       verifyDisciplineSelected(disciplineOne)
     }
 
-    it("should allow users to remove filter and refine results again"){
+    it("should be able to further narrow down results by deselecting and selecting facets"){
       deSelectFacet(disciplineOne)
       selectDisciplineFacet(disciplineTwo)
     }
