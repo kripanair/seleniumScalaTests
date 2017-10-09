@@ -2,12 +2,11 @@ package pages
 
 import org.openqa.selenium.{By, WebElement}
 import org.scalatest.Matchers
-import org.scalatest.selenium.WebBrowser
 import utils.Driver
 
 import scala.collection.JavaConversions._
 
-trait SearchPage extends Driver with WebBrowser with Matchers{
+trait SearchPage extends Driver with Matchers{
 
   val baseUrl = "https://link.springer.com"
   val searchTextField = "query"
@@ -27,6 +26,11 @@ trait SearchPage extends Driver with WebBrowser with Matchers{
       .filter(elem => elem.findElement(By.className("facet-title")).getText.equals(disciplineName)).head
   }
 
-  def getSelectedFilter(): WebElement = waitAndGet(By.xpath("//a[@title='Remove this filter']"))
+  def getSelectedFilter: WebElement = waitAndGet(By.xpath("//a[@title='Remove this filter']"))
 
+  def getClearSearchLink: WebElement = waitAndGet(By.id("global-search-new"))
+
+  def getSnippetImageTitle(imgTitle: String): WebElement = waitAndGet(By.xpath(s"//a/img[@title='$imgTitle']"))
+
+  def getSearchSummary: WebElement = waitAndGet(By.className("number-of-search-results-and-search-terms"))
 }

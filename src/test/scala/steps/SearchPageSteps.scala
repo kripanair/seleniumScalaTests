@@ -30,13 +30,20 @@ class SearchPageSteps extends SearchPage{
   }
 
   def verifyDisciplineSelected(disciplineName: String): Unit ={
-    getSelectedFilter().getText should be(disciplineName)
+    getSelectedFilter.getText should be(disciplineName)
   }
 
   def deSelectFacet(disciplineName:String): Unit ={
-    if(getSelectedFilter().getText equals disciplineName){
-      getSelectedFilter().click()
+    if(getSelectedFilter.getText equals disciplineName){
+      getSelectedFilter.click()
     }
   }
 
+  def clearSearch(): Unit = getClearSearchLink.click()
+
+  def verifySearchIsCleared(): Unit = getCurrentUrl should equal (baseUrl+"/search")
+
+  def verifySnippetImage(imageTitle: String): Assertion = getSnippetImageTitle(imageTitle).isDisplayed should equal (true)
+
+  def verifySearchResultSummary(count:String , searchTerm: String): Assertion = getSearchSummary.getText should equal(s"$count Result(s) for '$searchTerm'")
 }
