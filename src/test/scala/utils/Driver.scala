@@ -9,7 +9,6 @@ import org.scalatest.selenium.WebBrowser
 import org.scalatest.{BeforeAndAfterAll, FunSpec}
 
 class Driver extends FunSpec with BeforeAndAfterAll with WebBrowser{
-  System.setProperty("webdriver.chrome.driver", "/Users/nair09/Downloads/chromedriver")
   implicit val driver = new ChromeDriver()
   driver.manage().window().maximize()
   driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS)
